@@ -24,7 +24,8 @@ pipeline {
 
     stage('Run') {
       steps {
-        sh 'cd /var/lib/jenkins/workspace/<pipeline-name> && go run . &'
+        sh 'cd /var/lib/jenkins/workspace/full-ci-cd && go run . &'
+        sh 'systemctl restart go-web-app'
       }
     }
 

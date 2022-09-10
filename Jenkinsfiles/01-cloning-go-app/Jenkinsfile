@@ -4,6 +4,7 @@ pipeline {
     stage('Clone') {
       steps {
         git 'https://github.com/hichamov/go-webapp-sample.git'
+        sh 'ls'
       }
     }
 
