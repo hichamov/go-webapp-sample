@@ -1,0 +1,15 @@
+pipeline {
+  agent {
+    docker { image 'golang:latest'}
+   }
+   
+  stages {
+    stage('Clone') {
+      steps {
+        git 'https://github.com/hichamov/go-webapp-sample.git'
+        sh 'go version'
+      }
+    }
+
+  }
+}

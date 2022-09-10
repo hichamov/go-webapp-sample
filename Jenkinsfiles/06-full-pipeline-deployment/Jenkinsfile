@@ -1,0 +1,32 @@
+pipeline {
+  agent any
+
+  tools { go '1.19' }
+  environment {
+    GO111MODULE='on'
+  }
+
+  stages {
+    stage('Test') {
+      steps {
+        git 'https://github.com/hichamov/go-webapp-sample.git'
+        // Run tests in directories and sub dirs
+        sh 'go test ./...'
+      }
+    }
+
+    stage('Build') {
+      steps {
+        git 'https://github.com/hichamov/go-webapp-sample.git'
+        sh 'go build .'
+      }
+    }
+
+    stage('Run') {
+      steps {
+        sh 'cd /var/lib/jenkins/workspace/<pipeline-name> && go run . &'
+      }
+    }
+
+  }
+}

@@ -1,0 +1,18 @@
+pipeline {
+  agent any
+  stages {
+
+    stage('Dev') {
+      steps {
+        git 'https://github.com/hichamov/go-webapp-sample.git'
+      }
+    }
+
+    stage('Preprod') {
+      steps {
+        git 'https://github.com/hichamov/go-webapp-sample.git'
+      }
+    }
+
+  }
+}
